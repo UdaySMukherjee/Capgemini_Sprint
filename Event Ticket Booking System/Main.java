@@ -8,13 +8,15 @@ public class Main {
         Scanner scanner = new Scanner(System.in);
 
         eventbookingsystem.loadEvents();
-
+//add book mult
         while (true) {
             System.out.println("\n1. Register Attendee");
             System.out.println("\n2. Add Event");
             System.out.println("\n3. Book Ticket");
-            System.out.println("\n4. Show Events");
-            System.out.println("\n5. Save & Exit");
+            System.out.println("\n4. Cancel Ticket");
+            System.out.println("\n5. Show Events");
+            System.out.println("\n6. Show List of ticket per attendee");
+            System.out.println("\n7. Save & Exit");
             System.out.print("Enter your Choice: ");
             int choice = scanner.nextInt();
             scanner.nextLine();
@@ -44,14 +46,34 @@ public class Main {
                         String id1 = scanner.nextLine();
                         System.out.print("Enter Event Title: ");
                         String title1 = scanner.nextLine();
-                        eventbookingsystem.bookTicket(id1, title1);
+                        System.out.println("Enter number of tickets you want to book: ");
+                        int num = scanner.nextInt();
+                        for(int i=0;i<num;i++) {
+                        	eventbookingsystem.bookTicket(id1, title1);
+                        }
                         break;
-                    
+                        
                     case 4:
+                    	System.out.print("Enter Attendee ID: ");
+                        String id2 = scanner.nextLine();
+                        System.out.print("Enter Event Title: ");
+                        String title2 = scanner.nextLine();
+                        System.out.println("Enter number of tickets you want to book: ");
+                        int num1 = scanner.nextInt();
+                        for(int i=0;i<num1;i++) {
+                        	eventbookingsystem.cancelTicket(id2, title2);
+                        }
+                        break;
+                    	
+                    case 5:
                     	eventbookingsystem.showEvents();
                     	break;
                     	
-                    case 5:
+                    case 6:
+                    	eventbookingsystem.showTicketsPerAttendee();
+                    	break;
+                    	
+                    case 7:
                     	eventbookingsystem.saveEvents();
                         System.out.println("Events saved. Exiting...");
                         System.exit(0);
