@@ -34,11 +34,13 @@ public class EventBookingSystem {
 	}
 	
 	void bookTicket(String attendeeId, String eventTitle) throws InvalidBookingException {
-		Attendee attendee = attendees.stream().filter(a -> a.id.equals(attendeeId)).findFirst().orElse(null);
+	Attendee attendee = attendees.stream().filter(a -> a.id.equals(attendeeId)).findFirst().orElse(null);
+		if (attendee == null ) {
+            throw new InvalidBookingException("Attendee ID not Found. Register First");
+        }
         Event event = events.stream().filter(e -> e.getTitel().equalsIgnoreCase(eventTitle)).findFirst().orElse(null);
-
-        if (attendee == null || event == null || !event.isAvailable()) {
-            throw new InvalidBookingException("Invalid booking request. Register First");
+        if (event == null || !event.isAvailable()) {
+            throw new InvalidBookingException("Invalid booking request. No Such Event");
         }
 
         event.setAvailableTickets(event.getAvailableTickets() - 1);
