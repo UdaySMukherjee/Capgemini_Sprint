@@ -19,5 +19,8 @@ public class Event {
 			return false;
 		}
 	}
+	public int getAvailableTickets() {
+		return this.availableTickets;
+	}
 	
 }
