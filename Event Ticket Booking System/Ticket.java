@@ -1,12 +1,12 @@
 package eventTicketBookingSystem;
 
 public class Ticket {
-	Attendee attendee;
-	Event event;
-	String status;
+	private Attendee attendee;
+	private Event event;
+	private String status;
 	public Ticket(Attendee attendee,Event event, String status) {
-		attendee=this.attendee;
-		event=this.event;
+		this.attendee=attendee;
+		this.event=event;
 		this.status="Booked";
 	}
 	void cancel() {
@@ -16,6 +16,6 @@ public class Ticket {
 		return this.status;
 	}
 	String ticketDetails() {
-		return "Event Name: \t"+this.event.getName()+"Attendee NAme: \t"+this.attendee.getName()+"Status \t"+this.status;
+		return "Event Titel: \t"+this.event.titel+"Attendee Name: \t"+this.attendee.name+"Status \t"+this.status;
 	}
 }

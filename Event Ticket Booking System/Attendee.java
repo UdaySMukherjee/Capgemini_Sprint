@@ -8,7 +8,5 @@ public class Attendee extends User{
 	public void showProfile() {
 		System.out.println("Attendee ID: "+this.id+"Attendee name: "+this.name);
 	}
-	String getName() {
-		return this.name;
-	}
+	
 }
